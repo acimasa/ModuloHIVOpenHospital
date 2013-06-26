@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/comm.jar"/>
+	<classpathentry kind="lib" path="lib/commons-beanutils-1.7.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-digester.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="lib/debug-disable-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/gstreamer-java-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/gsvideo_isf.jar"/>
+	<classpathentry kind="lib" path="lib/Hal.jar"/>
+	<classpathentry kind="lib" path="lib/hexdump-0.2.jar"/>
+	<classpathentry kind="lib" path="lib/io-0.1.jar"/>
+	<classpathentry kind="lib" path="lib/itext-1.01.jar"/>
+	<classpathentry kind="lib" path="lib/jasperreports-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/jcalendar-1.3.2.jar"/>
+	<classpathentry kind="lib" path="lib/jna_3.2.4.jar"/>
+	<classpathentry kind="lib" path="lib/junit-4.1.jar"/>
+	<classpathentry kind="lib" path="lib/libdbus-java-2.4.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.14-bin.jar"/>
+	<classpathentry kind="lib" path="lib/processing_core.jar"/>
+	<classpathentry kind="lib" path="lib/sal_isf.jar"/>
+	<classpathentry kind="lib" path="lib/smack.jar"/>
+	<classpathentry kind="lib" path="lib/smackx.jar"/>
+	<classpathentry kind="lib" path="lib/snmp6_0.jar"/>
+	<classpathentry kind="lib" path="lib/swt-gtk-3.5.jar"/>
+	<classpathentry kind="lib" path="lib/unix-0.3.jar"/>
+	<classpathentry kind="lib" path="lib/v4l4j.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.6.4.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.6.4.jar"/>
+	<classpathentry kind="lib" path="bundle"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
