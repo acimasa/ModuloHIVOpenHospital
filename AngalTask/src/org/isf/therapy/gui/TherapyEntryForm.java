@@ -205,7 +205,7 @@ public class TherapyEntryForm extends JDialog {
 	}
 
 	private void fillDaysWeeksMonthsFromDates(GregorianCalendar firstDay, GregorianCalendar lastDay) {
-		// TODO: calcolo più preciso
+		// TODO: calcolo piÃ¹ preciso
 		int differenzaInGiorni = TimeTools.getDifferenzaInGiorni(firstDay, lastDay);
 		int settimane = differenzaInGiorni / 7;
 		int giorni = differenzaInGiorni - settimane * 7;

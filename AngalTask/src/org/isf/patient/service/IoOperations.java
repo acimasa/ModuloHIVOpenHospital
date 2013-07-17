@@ -495,7 +495,7 @@ public class IoOperations {
 			result = dbQuery.setDataWithParams(query.toString(), params, true);
 
 			/*
-			 * Occorre aggiornare il model perché il paziente non viene riletto dal DB.
+			 * Occorre aggiornare il model perchÃ¨ il paziente non viene riletto dal DB.
 			 */
 			if (result)
 				patient.setLock(lock + 1);

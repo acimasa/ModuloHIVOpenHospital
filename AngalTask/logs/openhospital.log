@@ -1,279 +1,133 @@
-[20/giu/2013 10:15:52] [:] INFO - 
+[16/lug/2013 12:26:57] [:] INFO - 
 
 =====================
 Starting OpenHospital
 =====================
  (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
-[20/giu/2013 10:15:52] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
-[20/giu/2013 10:15:52] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
-[20/giu/2013 10:15:55] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
-[20/giu/2013 10:15:55] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
-[20/giu/2013 10:15:55] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:15:55] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:15:55] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:16:17] [admin:admin] DEBUG - Query SELECT PAT.*, ADM.* FROM PATIENT PAT LEFT JOIN (SELECT * FROM ADMISSION WHERE (ADM_DELETED=\'N\' or ADM_DELETED is null) AND ADM_IN = 1) ADM ON ADM.ADM_PAT_ID = PAT.PAT_ID WHERE (PAT.PAT_DELETED=\'N\' or PAT.PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:16:17] [admin:admin] DEBUG - Query SELECT * FROM WARD (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:16:23] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:16:23] [admin:admin] DEBUG - Query SELECT * FROM THERAPIES JOIN (MEDICALDSR JOIN MEDICALDSRTYPE ON MDSR_MDSRT_ID_A = MDSRT_ID_A) ON THR_MDSR_ID = MDSR_ID WHERE THR_PAT_ID = ? ORDER BY THR_PAT_ID, THR_CODE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:16:23] [admin:admin] DEBUG - Query SELECT * FROM VISITS WHERE VST_PAT_ID = ? ORDER BY VST_PAT_ID, VST_DATE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:16:30] [admin:admin] DEBUG - Query SELECT * FROM ADMISSION WHERE ADM_PAT_ID=? and ADM_DELETED=\'N\' ORDER BY ADM_DATE_ADM ASC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:16:30] [admin:admin] DEBUG - Query select * from DISEASE join DISEASETYPE on DIS_DCL_ID_A = DCL_ID_A order BY DIS_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:16:30] [admin:admin] DEBUG - Query SELECT * FROM WARD (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:16:30] [admin:admin] DEBUG - Query SELECT * FROM OPD WHERE OPD_PAT_ID = ? ORDER BY OPD_PROG_YEAR DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:16:30] [admin:admin] DEBUG - Query SELECT * FROM (LABORATORY JOIN EXAM ON LAB_EXA_ID_A=EXA_ID_A) LEFT JOIN LABORATORYROW ON LABR_LAB_ID = LAB_ID WHERE LAB_PAT_ID = ?  ORDER BY LAB_DATE, LAB_ID (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:16:35] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:16:35] [admin:admin] DEBUG - Query SELECT * FROM THERAPIES JOIN (MEDICALDSR JOIN MEDICALDSRTYPE ON MDSR_MDSRT_ID_A = MDSRT_ID_A) ON THR_MDSR_ID = MDSR_ID WHERE THR_PAT_ID = ? ORDER BY THR_PAT_ID, THR_CODE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:16:35] [admin:admin] DEBUG - Query SELECT * FROM VISITS WHERE VST_PAT_ID = ? ORDER BY VST_PAT_ID, VST_DATE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:16:38] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:17:12] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:17:35] [admin:admin] DEBUG - Query DELETE FROM THERAPIES WHERE THR_PAT_ID = ? (org.isf.utils.db.DbQueryLogger.setDataWithParams(DbQueryLogger.java:121))
-[20/giu/2013 10:17:36] [admin:admin] DEBUG - Query INSERT INTO THERAPIES (THR_CODE, THR_PAT_ID, THR_STARTDATE, THR_ENDDATE, THR_MDSR_ID, THR_QTY, THR_UNT_ID, THR_FREQINDAY, THR_FREQINPRD, THR_NOTE, THR_NOTIFY, THR_SMS) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) (org.isf.utils.db.DbQueryLogger.setDataWithParams(DbQueryLogger.java:121))
-[20/giu/2013 10:17:36] [admin:admin] DEBUG - Query INSERT INTO THERAPIES (THR_CODE, THR_PAT_ID, THR_STARTDATE, THR_ENDDATE, THR_MDSR_ID, THR_QTY, THR_UNT_ID, THR_FREQINDAY, THR_FREQINPRD, THR_NOTE, THR_NOTIFY, THR_SMS) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) (org.isf.utils.db.DbQueryLogger.setDataWithParams(DbQueryLogger.java:121))
-[20/giu/2013 10:17:39] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:18:13] [admin:admin] INFO - 
+[16/lug/2013 12:26:57] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[16/lug/2013 12:26:57] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[16/lug/2013 12:27:01] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[16/lug/2013 12:27:01] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[16/lug/2013 12:27:01] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[16/lug/2013 12:27:01] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[16/lug/2013 12:27:01] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[16/lug/2013 12:27:07] [admin:admin] INFO - 
 
 =====================
  OpenHospital closed 
 =====================
  (org.isf.menu.gui.MainMenu.actionExit(MainMenu.java:257))
-[20/giu/2013 10:23:48] [:] INFO - 
+[16/lug/2013 12:29:43] [:] INFO - 
 
 =====================
 Starting OpenHospital
 =====================
  (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
-[20/giu/2013 10:23:49] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
-[20/giu/2013 10:23:49] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
-[20/giu/2013 10:23:52] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
-[20/giu/2013 10:23:52] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
-[20/giu/2013 10:23:52] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:23:52] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:23:52] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:23:59] [admin:admin] DEBUG - Query SELECT PAT.*, ADM.* FROM PATIENT PAT LEFT JOIN (SELECT * FROM ADMISSION WHERE (ADM_DELETED=\'N\' or ADM_DELETED is null) AND ADM_IN = 1) ADM ON ADM.ADM_PAT_ID = PAT.PAT_ID WHERE (PAT.PAT_DELETED=\'N\' or PAT.PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:23:59] [admin:admin] DEBUG - Query SELECT * FROM WARD (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:24:04] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:24:04] [admin:admin] DEBUG - Query SELECT * FROM THERAPIES JOIN (MEDICALDSR JOIN MEDICALDSRTYPE ON MDSR_MDSRT_ID_A = MDSRT_ID_A) ON THR_MDSR_ID = MDSR_ID WHERE THR_PAT_ID = ? ORDER BY THR_PAT_ID, THR_CODE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:24:05] [admin:admin] DEBUG - Query SELECT * FROM VISITS WHERE VST_PAT_ID = ? ORDER BY VST_PAT_ID, VST_DATE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:24:07] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:25:45] [:] INFO - 
-
-=====================
-Starting OpenHospital
-=====================
- (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
-[20/giu/2013 10:25:45] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
-[20/giu/2013 10:25:45] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
-[20/giu/2013 10:25:48] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
-[20/giu/2013 10:25:48] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
-[20/giu/2013 10:25:48] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:25:48] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:25:48] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:25:51] [admin:admin] DEBUG - Query SELECT PAT.*, ADM.* FROM PATIENT PAT LEFT JOIN (SELECT * FROM ADMISSION WHERE (ADM_DELETED=\'N\' or ADM_DELETED is null) AND ADM_IN = 1) ADM ON ADM.ADM_PAT_ID = PAT.PAT_ID WHERE (PAT.PAT_DELETED=\'N\' or PAT.PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:25:51] [admin:admin] DEBUG - Query SELECT * FROM WARD (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:25:55] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:25:55] [admin:admin] DEBUG - Query SELECT * FROM THERAPIES JOIN (MEDICALDSR JOIN MEDICALDSRTYPE ON MDSR_MDSRT_ID_A = MDSRT_ID_A) ON THR_MDSR_ID = MDSR_ID WHERE THR_PAT_ID = ? ORDER BY THR_PAT_ID, THR_CODE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:25:55] [admin:admin] DEBUG - Query SELECT * FROM VISITS WHERE VST_PAT_ID = ? ORDER BY VST_PAT_ID, VST_DATE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:25:58] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:31:24] [admin:admin] DEBUG - Query SELECT PAT.*, ADM.* FROM PATIENT PAT LEFT JOIN (SELECT * FROM ADMISSION WHERE (ADM_DELETED=\'N\' or ADM_DELETED is null) AND ADM_IN = 1) ADM ON ADM.ADM_PAT_ID = PAT.PAT_ID WHERE (PAT.PAT_DELETED=\'N\' or PAT.PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:31:24] [admin:admin] DEBUG - Query SELECT * FROM WARD (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:31:29] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:31:29] [admin:admin] DEBUG - Query SELECT * FROM THERAPIES JOIN (MEDICALDSR JOIN MEDICALDSRTYPE ON MDSR_MDSRT_ID_A = MDSRT_ID_A) ON THR_MDSR_ID = MDSR_ID WHERE THR_PAT_ID = ? ORDER BY THR_PAT_ID, THR_CODE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:31:29] [admin:admin] DEBUG - Query SELECT * FROM VISITS WHERE VST_PAT_ID = ? ORDER BY VST_PAT_ID, VST_DATE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:33:16] [:] INFO - 
-
-=====================
-Starting OpenHospital
-=====================
- (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
-[20/giu/2013 10:33:16] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
-[20/giu/2013 10:33:16] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
-[20/giu/2013 10:33:19] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
-[20/giu/2013 10:33:19] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
-[20/giu/2013 10:33:19] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:33:19] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:33:19] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:33:19] [admin:admin] INFO - 
+[16/lug/2013 12:29:43] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[16/lug/2013 12:29:43] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[16/lug/2013 12:29:46] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[16/lug/2013 12:29:46] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[16/lug/2013 12:29:46] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[16/lug/2013 12:29:46] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[16/lug/2013 12:29:46] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[16/lug/2013 12:29:58] [admin:admin] DEBUG - Query SELECT * FROM EXAM JOIN EXAMTYPE ON EXA_EXC_ID_A = EXC_ID_A ORDER BY EXC_DESC, EXA_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
+[16/lug/2013 12:29:58] [admin:admin] DEBUG - Query SELECT * FROM LABORATORY JOIN EXAM ON LAB_EXA_ID_A = EXA_ID_A WHERE LAB_EXAM_DATE >= ? AND LAB_EXAM_DATE <= ? ORDER BY LAB_EXAM_DATE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[16/lug/2013 12:30:01] [admin:admin] INFO - 
 
 =====================
  OpenHospital closed 
 =====================
  (org.isf.menu.gui.MainMenu.actionExit(MainMenu.java:257))
-[20/giu/2013 10:33:21] [admin:admin] INFO - 
+[16/lug/2013 15:33:24] [:] INFO - 
+
+=====================
+Starting OpenHospital
+=====================
+ (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
+[16/lug/2013 15:33:25] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[16/lug/2013 15:33:25] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[16/lug/2013 15:33:29] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[16/lug/2013 15:33:29] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[16/lug/2013 15:33:29] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[16/lug/2013 15:33:30] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[16/lug/2013 15:33:30] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[16/lug/2013 15:33:38] [admin:admin] INFO - 
 
 =====================
  OpenHospital closed 
 =====================
  (org.isf.menu.gui.MainMenu.actionExit(MainMenu.java:257))
-[20/giu/2013 10:33:23] [:] INFO - 
+[16/lug/2013 15:38:18] [:] INFO - 
 
 =====================
 Starting OpenHospital
 =====================
  (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
-[20/giu/2013 10:33:23] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
-[20/giu/2013 10:33:23] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
-[20/giu/2013 10:33:27] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
-[20/giu/2013 10:33:27] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
-[20/giu/2013 10:33:27] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:33:27] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:33:27] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:33:29] [admin:admin] DEBUG - Query SELECT PAT.*, ADM.* FROM PATIENT PAT LEFT JOIN (SELECT * FROM ADMISSION WHERE (ADM_DELETED=\'N\' or ADM_DELETED is null) AND ADM_IN = 1) ADM ON ADM.ADM_PAT_ID = PAT.PAT_ID WHERE (PAT.PAT_DELETED=\'N\' or PAT.PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:37:49] [:] INFO - 
-
-=====================
-Starting OpenHospital
-=====================
- (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
-[20/giu/2013 10:37:49] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
-[20/giu/2013 10:37:49] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
-[20/giu/2013 10:37:52] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
-[20/giu/2013 10:37:52] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
-[20/giu/2013 10:37:52] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:37:52] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:37:52] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:37:55] [admin:admin] DEBUG - Query SELECT PAT.*, ADM.* FROM PATIENT PAT LEFT JOIN (SELECT * FROM ADMISSION WHERE (ADM_DELETED=\'N\' or ADM_DELETED is null) AND ADM_IN = 1) ADM ON ADM.ADM_PAT_ID = PAT.PAT_ID WHERE (PAT.PAT_DELETED=\'N\' or PAT.PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:38:57] [:] INFO - 
-
-=====================
-Starting OpenHospital
-=====================
- (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
-[20/giu/2013 10:38:58] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
-[20/giu/2013 10:38:58] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
-[20/giu/2013 10:39:01] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
-[20/giu/2013 10:39:01] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
-[20/giu/2013 10:39:01] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:39:01] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:39:01] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:39:03] [admin:admin] DEBUG - Query SELECT PAT.*, ADM.* FROM PATIENT PAT LEFT JOIN (SELECT * FROM ADMISSION WHERE (ADM_DELETED=\'N\' or ADM_DELETED is null) AND ADM_IN = 1) ADM ON ADM.ADM_PAT_ID = PAT.PAT_ID WHERE (PAT.PAT_DELETED=\'N\' or PAT.PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:39:03] [admin:admin] DEBUG - Query SELECT * FROM WARD (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:43:41] [:] INFO - 
-
-=====================
-Starting OpenHospital
-=====================
- (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
-[20/giu/2013 10:43:42] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
-[20/giu/2013 10:43:42] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
-[20/giu/2013 10:43:45] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
-[20/giu/2013 10:43:45] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
-[20/giu/2013 10:43:45] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:43:45] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:43:45] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 10:43:47] [admin:admin] DEBUG - Query SELECT PAT.*, ADM.* FROM PATIENT PAT LEFT JOIN (SELECT * FROM ADMISSION WHERE (ADM_DELETED=\'N\' or ADM_DELETED is null) AND ADM_IN = 1) ADM ON ADM.ADM_PAT_ID = PAT.PAT_ID WHERE (PAT.PAT_DELETED=\'N\' or PAT.PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:43:47] [admin:admin] DEBUG - Query SELECT * FROM WARD (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:43:55] [admin:admin] DEBUG - Query SELECT * FROM ADMISSION WHERE ADM_PAT_ID=? and ADM_DELETED=\'N\' ORDER BY ADM_DATE_ADM ASC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:43:55] [admin:admin] DEBUG - Query select * from DISEASE join DISEASETYPE on DIS_DCL_ID_A = DCL_ID_A order BY DIS_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:43:55] [admin:admin] DEBUG - Query SELECT * FROM WARD (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:43:55] [admin:admin] DEBUG - Query SELECT * FROM OPD WHERE OPD_PAT_ID = ? ORDER BY OPD_PROG_YEAR DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:44:00] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:44:01] [admin:admin] DEBUG - Query SELECT * FROM THERAPIES JOIN (MEDICALDSR JOIN MEDICALDSRTYPE ON MDSR_MDSRT_ID_A = MDSRT_ID_A) ON THR_MDSR_ID = MDSR_ID WHERE THR_PAT_ID = ? ORDER BY THR_PAT_ID, THR_CODE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:44:01] [admin:admin] DEBUG - Query SELECT * FROM VISITS WHERE VST_PAT_ID = ? ORDER BY VST_PAT_ID, VST_DATE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:44:11] [admin:admin] DEBUG - Query SELECT * FROM EXAM JOIN EXAMTYPE ON EXA_EXC_ID_A = EXC_ID_A ORDER BY EXC_DESC, EXA_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:44:12] [admin:admin] DEBUG - Query SELECT * FROM LABORATORY JOIN EXAM ON LAB_EXA_ID_A = EXA_ID_A WHERE LAB_EXAM_DATE >= ? AND LAB_EXAM_DATE <= ? ORDER BY LAB_EXAM_DATE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:44:16] [admin:admin] DEBUG - Query SELECT * FROM EXAM JOIN EXAMTYPE ON EXA_EXC_ID_A = EXC_ID_A ORDER BY EXC_DESC, EXA_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:44:16] [admin:admin] DEBUG - Query SELECT * FROM EXAMROW ORDER BY EXR_EXA_ID_A, EXR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:44:20] [admin:admin] DEBUG - Query SELECT * FROM PATIENT LEFT JOIN (SELECT MLN_PAT_ID, MLN_HEIGHT AS PAT_HEIGHT, MLN_WEIGHT AS PAT_WEIGHT FROM MALNUTRITIONCONTROL GROUP BY MLN_PAT_ID ORDER BY MLN_DATE_SUPP DESC) AS HW ON PAT_ID = HW.MLN_PAT_ID WHERE (PAT_DELETED=\'N\' or PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:44:41] [admin:admin] DEBUG - Query SELECT * FROM ADMISSION WHERE ADM_PAT_ID=? AND ADM_DELETED=\'N\' AND ADM_DATE_DIS IS NULL (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:46:34] [admin:admin] DEBUG - Query SELECT * FROM EXAM JOIN EXAMTYPE ON EXA_EXC_ID_A = EXC_ID_A ORDER BY EXC_DESC, EXA_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:46:34] [admin:admin] DEBUG - Query SELECT * FROM LABORATORY JOIN EXAM ON LAB_EXA_ID_A = EXA_ID_A WHERE LAB_EXAM_DATE >= ? AND LAB_EXAM_DATE <= ? ORDER BY LAB_EXAM_DATE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:46:38] [admin:admin] DEBUG - Query SELECT * FROM EXAM JOIN EXAMTYPE ON EXA_EXC_ID_A = EXC_ID_A ORDER BY EXC_DESC, EXA_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:46:38] [admin:admin] DEBUG - Query SELECT * FROM EXAMROW ORDER BY EXR_EXA_ID_A, EXR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:55:40] [admin:admin] DEBUG - Query SELECT * FROM VACCINETYPE ORDER BY VACT_ID_A (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:55:40] [admin:admin] DEBUG - Query SELECT * FROM VACCINE JOIN VACCINETYPE ON VAC_VACT_ID_A = VACT_ID_A ORDER BY VAC_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:55:41] [admin:admin] DEBUG - Query SELECT PV.*, V.*, P.PAT_SNAME, P.PAT_FNAME, P.PAT_AGE, P.PAT_SEX , VT.VACT_ID_A, VT.VACT_DESC FROM PATIENTVACCINE PV JOIN VACCINE V ON PAV_VAC_ID_A=VAC_ID_A JOIN VACCINETYPE VT ON VAC_VACT_ID_A = VACT_ID_A JOIN PATIENT P ON PAV_PAT_ID = PAT_ID WHERE DATE_FORMAT(PAV_DATE,\'%Y-%m-%d\') >= ? AND DATE_FORMAT(PAV_DATE,\'%Y-%m-%d\') <= ? ORDER BY PV.PAV_DATE, PV.PAV_ID (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:55:42] [admin:admin] DEBUG - Query SELECT MAX(PAV_YPROG) FROM PATIENTVACCINE (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:55:42] [admin:admin] DEBUG - Query SELECT * FROM VACCINETYPE ORDER BY VACT_ID_A (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:55:42] [admin:admin] DEBUG - Query SELECT * FROM VACCINE JOIN VACCINETYPE ON VAC_VACT_ID_A = VACT_ID_A ORDER BY VAC_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:55:42] [admin:admin] DEBUG - Query SELECT * FROM PATIENT WHERE (PAT_DELETED=\'N\' OR PAT_DELETED IS NULL) ORDER BY PAT_NAME (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:55:53] [admin:admin] DEBUG - Query SELECT PAT.*, ADM.* FROM PATIENT PAT LEFT JOIN (SELECT * FROM ADMISSION WHERE (ADM_DELETED=\'N\' or ADM_DELETED is null) AND ADM_IN = 1) ADM ON ADM.ADM_PAT_ID = PAT.PAT_ID WHERE (PAT.PAT_DELETED=\'N\' or PAT.PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:55:53] [admin:admin] DEBUG - Query SELECT * FROM WARD (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:55:57] [admin:admin] DEBUG - Query SELECT * FROM ADMISSION WHERE ADM_PAT_ID=? and ADM_DELETED=\'N\' ORDER BY ADM_DATE_ADM ASC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:55:57] [admin:admin] DEBUG - Query select * from DISEASE join DISEASETYPE on DIS_DCL_ID_A = DCL_ID_A order BY DIS_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:55:57] [admin:admin] DEBUG - Query SELECT * FROM WARD (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:55:57] [admin:admin] DEBUG - Query SELECT * FROM OPD WHERE OPD_PAT_ID = ? ORDER BY OPD_PROG_YEAR DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:56:02] [admin:admin] DEBUG - Query select * from AGETYPE order by AT_CODE (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:56:05] [admin:admin] DEBUG - Query SELECT * FROM MALNUTRITIONCONTROL WHERE MLN_PAT_ID = ? ORDER BY MLN_DATE_SUPP DESC LIMIT 1 (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:56:19] [admin:admin] DEBUG - Query SELECT * FROM ADMISSION WHERE ADM_PAT_ID=? and ADM_DELETED=\'N\' ORDER BY ADM_DATE_ADM ASC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:56:19] [admin:admin] DEBUG - Query select * from DISEASE join DISEASETYPE on DIS_DCL_ID_A = DCL_ID_A order BY DIS_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:56:19] [admin:admin] DEBUG - Query SELECT * FROM WARD (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:56:19] [admin:admin] DEBUG - Query SELECT * FROM OPD WHERE OPD_PAT_ID = ? ORDER BY OPD_PROG_YEAR DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:56:19] [admin:admin] DEBUG - Query SELECT * FROM (LABORATORY JOIN EXAM ON LAB_EXA_ID_A=EXA_ID_A) LEFT JOIN LABORATORYROW ON LABR_LAB_ID = LAB_ID WHERE LAB_PAT_ID = ?  ORDER BY LAB_DATE, LAB_ID (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:56:21] [admin:admin] DEBUG - Query SELECT * FROM HOSPITAL (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:56:37] [admin:admin] DEBUG - Query SELECT * FROM BILLS WHERE BLL_STATUS = \'O\' AND BLL_ID_PAT = ? ORDER BY BLL_DATE DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:56:37] [admin:admin] DEBUG - Query SELECT * FROM PRICES ORDER BY PRC_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:56:37] [admin:admin] DEBUG - Query SELECT * FROM PRICELISTS (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:56:37] [admin:admin] DEBUG - Query SELECT * FROM PRICESOTHERS ORDER BY OTH_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:56:37] [admin:admin] DEBUG - Query SELECT * FROM PRICES ORDER BY PRC_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:56:37] [admin:admin] DEBUG - Query SELECT * FROM PRICELISTS (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:56:37] [admin:admin] DEBUG - Query SELECT * FROM PRICESOTHERS ORDER BY OTH_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:56:40] [admin:admin] DEBUG - Query select * from DISEASETYPE order by DCL_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:56:40] [admin:admin] DEBUG - Query select * from DISEASE join DISEASETYPE on DIS_DCL_ID_A = DCL_ID_A where  (DIS_OPD_INCLUDE=1 or DIS_OPD_INCLUDE is null)  order BY DIS_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:56:40] [admin:admin] DEBUG - Query select * from DISEASE join DISEASETYPE on DIS_DCL_ID_A = DCL_ID_A order BY DIS_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:56:40] [admin:admin] DEBUG - Query SELECT MAX(OPD_PROG_YEAR) FROM OPD WHERE YEAR(OPD_DATE) = ? (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:56:40] [admin:admin] DEBUG - Query SELECT * FROM OPD WHERE OPD_PAT_ID = ?  ORDER BY OPD_DATE DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:57:24] [admin:admin] DEBUG - Query select * from DISEASE join DISEASETYPE on DIS_DCL_ID_A = DCL_ID_A order BY DIS_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:57:24] [admin:admin] DEBUG - Query select * from DISEASETYPE order by DCL_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:58:04] [admin:admin] DEBUG - Query select * from DISEASETYPE order by DCL_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:58:04] [admin:admin] DEBUG - Query select * from DISEASE join DISEASETYPE on DIS_DCL_ID_A = DCL_ID_A where  (DIS_OPD_INCLUDE=1 or DIS_OPD_INCLUDE is null)  order BY DIS_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:58:05] [admin:admin] DEBUG - Query SELECT * FROM OPD LEFT JOIN DISEASE ON OPD_DIS_ID_A = DIS_ID_A LEFT JOIN DISEASETYPE ON DIS_DCL_ID_A = DCL_ID_A WHERE 1 AND OPD_DATE_VIS BETWEEN ? AND ? ORDER BY OPD_DATE_VIS (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:58:08] [admin:admin] DEBUG - Query select * from DISEASETYPE order by DCL_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 10:58:08] [admin:admin] DEBUG - Query select * from DISEASE join DISEASETYPE on DIS_DCL_ID_A = DCL_ID_A where  (DIS_OPD_INCLUDE=1 or DIS_OPD_INCLUDE is null)  order BY DIS_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:58:08] [admin:admin] DEBUG - Query select * from DISEASE join DISEASETYPE on DIS_DCL_ID_A = DCL_ID_A order BY DIS_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:58:08] [admin:admin] DEBUG - Query SELECT MAX(OPD_PROG_YEAR) FROM OPD WHERE YEAR(OPD_DATE) = ? (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:58:12] [admin:admin] DEBUG - Query SELECT * FROM PATIENT LEFT JOIN (SELECT MLN_PAT_ID, MLN_HEIGHT AS PAT_HEIGHT, MLN_WEIGHT AS PAT_WEIGHT FROM MALNUTRITIONCONTROL GROUP BY MLN_PAT_ID ORDER BY MLN_DATE_SUPP DESC) AS HW ON PAT_ID = HW.MLN_PAT_ID WHERE (PAT_DELETED=\'N\' or PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:58:13] [admin:admin] DEBUG - Query SELECT * FROM PATIENT LEFT JOIN (SELECT MLN_PAT_ID, MLN_HEIGHT AS PAT_HEIGHT, MLN_WEIGHT AS PAT_WEIGHT FROM MALNUTRITIONCONTROL GROUP BY MLN_PAT_ID ORDER BY MLN_DATE_SUPP DESC) AS HW ON PAT_ID = HW.MLN_PAT_ID WHERE (PAT_DELETED=\'N\' or PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:58:14] [admin:admin] DEBUG - Query SELECT * FROM PATIENT LEFT JOIN (SELECT MLN_PAT_ID, MLN_HEIGHT AS PAT_HEIGHT, MLN_WEIGHT AS PAT_WEIGHT FROM MALNUTRITIONCONTROL GROUP BY MLN_PAT_ID ORDER BY MLN_DATE_SUPP DESC) AS HW ON PAT_ID = HW.MLN_PAT_ID WHERE (PAT_DELETED=\'N\' or PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:58:14] [admin:admin] DEBUG - Query SELECT * FROM PATIENT LEFT JOIN (SELECT MLN_PAT_ID, MLN_HEIGHT AS PAT_HEIGHT, MLN_WEIGHT AS PAT_WEIGHT FROM MALNUTRITIONCONTROL GROUP BY MLN_PAT_ID ORDER BY MLN_DATE_SUPP DESC) AS HW ON PAT_ID = HW.MLN_PAT_ID WHERE (PAT_DELETED=\'N\' or PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:58:14] [admin:admin] DEBUG - Query SELECT * FROM PATIENT LEFT JOIN (SELECT MLN_PAT_ID, MLN_HEIGHT AS PAT_HEIGHT, MLN_WEIGHT AS PAT_WEIGHT FROM MALNUTRITIONCONTROL GROUP BY MLN_PAT_ID ORDER BY MLN_DATE_SUPP DESC) AS HW ON PAT_ID = HW.MLN_PAT_ID WHERE (PAT_DELETED=\'N\' or PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 10:58:17] [admin:admin] DEBUG - Query SELECT * FROM OPD WHERE OPD_PAT_ID = ?  ORDER BY OPD_DATE DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:19:15] [admin:admin] DEBUG - Query SELECT * FROM EXAM JOIN EXAMTYPE ON EXA_EXC_ID_A = EXC_ID_A ORDER BY EXC_DESC, EXA_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 11:19:15] [admin:admin] DEBUG - Query SELECT * FROM LABORATORY JOIN EXAM ON LAB_EXA_ID_A = EXA_ID_A WHERE LAB_EXAM_DATE >= ? AND LAB_EXAM_DATE <= ? ORDER BY LAB_EXAM_DATE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:19:16] [admin:admin] DEBUG - Query SELECT * FROM EXAM JOIN EXAMTYPE ON EXA_EXC_ID_A = EXC_ID_A ORDER BY EXC_DESC, EXA_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 11:19:16] [admin:admin] DEBUG - Query SELECT * FROM EXAMROW ORDER BY EXR_EXA_ID_A, EXR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:19:18] [admin:admin] DEBUG - Query SELECT * FROM PATIENT LEFT JOIN (SELECT MLN_PAT_ID, MLN_HEIGHT AS PAT_HEIGHT, MLN_WEIGHT AS PAT_WEIGHT FROM MALNUTRITIONCONTROL GROUP BY MLN_PAT_ID ORDER BY MLN_DATE_SUPP DESC) AS HW ON PAT_ID = HW.MLN_PAT_ID WHERE (PAT_DELETED=\'N\' or PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:19:20] [admin:admin] DEBUG - Query SELECT * FROM ADMISSION WHERE ADM_PAT_ID=? AND ADM_DELETED=\'N\' AND ADM_DATE_DIS IS NULL (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:20:04] [admin:admin] DEBUG - Query INSERT INTO LABORATORY (LAB_EXA_ID_A ,LAB_DATE, LAB_RES, LAB_NOTE, LAB_PAT_NAME, LAB_PAT_ID, LAB_AGE, LAB_SEX, LAB_MATERIAL, LAB_EXAM_DATE, LAB_PAT_INOUT) values (?,?,?,?,?,?,?,?,?,?,?) (org.isf.utils.db.DbQueryLogger.setDataReturnGeneratedKeyWithParams(DbQueryLogger.java:181))
-[20/giu/2013 11:20:04] [admin:admin] DEBUG - Query SELECT * FROM LABORATORY JOIN EXAM ON LAB_EXA_ID_A = EXA_ID_A WHERE LAB_EXAM_DATE >= ? AND LAB_EXAM_DATE <= ? ORDER BY LAB_EXAM_DATE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:20:12] [admin:admin] DEBUG - Query SELECT * FROM EXAM JOIN EXAMTYPE ON EXA_EXC_ID_A = EXC_ID_A ORDER BY EXC_DESC, EXA_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 11:20:12] [admin:admin] DEBUG - Query SELECT * FROM PATIENT WHERE PAT_ID = ? (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:20:12] [admin:admin] DEBUG - Query SELECT * FROM EXAMROW WHERE EXR_EXA_ID_A = ? ORDER BY EXR_EXA_ID_A, EXR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:20:26] [admin:admin] DEBUG - Query SELECT * FROM EXAM JOIN EXAMTYPE ON EXA_EXC_ID_A = EXC_ID_A ORDER BY EXC_DESC, EXA_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 11:20:27] [admin:admin] DEBUG - Query SELECT EXC_ID_A, EXC_DESC FROM EXAMTYPE ORDER BY EXC_DESC (org.isf.utils.db.DbQueryLogger.getData(DbQueryLogger.java:38))
-[20/giu/2013 11:20:46] [admin:admin] DEBUG - Query SELECT * FROM EXAMROW WHERE EXR_EXA_ID_A = ? ORDER BY EXR_EXA_ID_A, EXR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:21:01] [admin:admin] INFO - 
+[16/lug/2013 15:38:19] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[16/lug/2013 15:38:19] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[16/lug/2013 15:38:22] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[16/lug/2013 15:38:22] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[16/lug/2013 15:38:22] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[16/lug/2013 15:38:22] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[16/lug/2013 15:38:22] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[16/lug/2013 15:38:30] [admin:admin] INFO - 
 
 =====================
  OpenHospital closed 
 =====================
  (org.isf.menu.gui.MainMenu.actionExit(MainMenu.java:257))
-[20/giu/2013 11:28:23] [:] INFO - 
+[16/lug/2013 15:48:06] [:] INFO - 
 
 =====================
 Starting OpenHospital
 =====================
  (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
-[20/giu/2013 11:28:23] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
-[20/giu/2013 11:28:23] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
-[20/giu/2013 11:28:26] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
-[20/giu/2013 11:28:26] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
-[20/giu/2013 11:28:26] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:28:26] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 11:28:26] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[20/giu/2013 11:28:31] [admin:admin] DEBUG - Query SELECT PAT.*, ADM.* FROM PATIENT PAT LEFT JOIN (SELECT * FROM ADMISSION WHERE (ADM_DELETED=\'N\' or ADM_DELETED is null) AND ADM_IN = 1) ADM ON ADM.ADM_PAT_ID = PAT.PAT_ID WHERE (PAT.PAT_DELETED=\'N\' or PAT.PAT_DELETED is null)  ORDER BY PAT_ID DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:28:31] [admin:admin] DEBUG - Query SELECT * FROM WARD (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:28:35] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:28:35] [admin:admin] DEBUG - Query SELECT * FROM THERAPIES JOIN (MEDICALDSR JOIN MEDICALDSRTYPE ON MDSR_MDSRT_ID_A = MDSRT_ID_A) ON THR_MDSR_ID = MDSR_ID WHERE THR_PAT_ID = ? ORDER BY THR_PAT_ID, THR_CODE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:28:35] [admin:admin] DEBUG - Query SELECT * FROM VISITS WHERE VST_PAT_ID = ? ORDER BY VST_PAT_ID, VST_DATE (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:28:49] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:28:49] [admin:admin] DEBUG - Query SELECT * FROM ((((MEDICALDSRSTOCKMOVWARD LEFT JOIN (PATIENT LEFT JOIN (SELECT MLN_PAT_ID, MLN_HEIGHT AS PAT_HEIGHT, MLN_WEIGHT AS PAT_WEIGHT FROM MALNUTRITIONCONTROL GROUP BY MLN_PAT_ID ORDER BY MLN_DATE_SUPP DESC) AS HW ON PAT_ID = HW.MLN_PAT_ID) ON MMVN_PAT_ID = PAT_ID) JOIN WARD ON MMVN_WRD_ID_A = WRD_ID_A)) JOIN MEDICALDSR ON MMVN_MDSR_ID = MDSR_ID) JOIN MEDICALDSRTYPE ON MDSR_MDSRT_ID_A = MDSRT_ID_A  (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:28:49] [admin:admin] DEBUG - Query SELECT SUM(MMV_QTY) MAIN FROM MEDICALDSRSTOCKMOV M WHERE MMV_MMVT_ID_A = \'discharge\' AND MMV_MDSR_ID = ?  (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:28:49] [admin:admin] DEBUG - Query SELECT SUM(MMVN_MDSR_QTY) DISCHARGE FROM MEDICALDSRSTOCKMOVWARD WHERE MMVN_MDSR_ID = ? (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:29:09] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:29:13] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:29:16] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 11:29:36] [admin:admin] DEBUG - Query select * from MEDICALDSR join MEDICALDSRTYPE on MDSR_MDSRT_ID_A = MDSRT_ID_A order BY MDSR_DESC (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[20/giu/2013 16:21:59] [admin:admin] INFO - 
+[16/lug/2013 15:48:06] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[16/lug/2013 15:48:06] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[16/lug/2013 15:48:09] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[16/lug/2013 15:48:09] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[16/lug/2013 15:48:09] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[16/lug/2013 15:48:09] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[16/lug/2013 15:48:09] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[16/lug/2013 15:48:24] [admin:admin] INFO - 
+
+=====================
+ OpenHospital closed 
+=====================
+ (org.isf.menu.gui.MainMenu.actionExit(MainMenu.java:257))
+[16/lug/2013 15:49:34] [:] INFO - 
+
+=====================
+Starting OpenHospital
+=====================
+ (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
+[16/lug/2013 15:49:34] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[16/lug/2013 15:49:34] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[16/lug/2013 15:49:37] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[16/lug/2013 15:49:37] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[16/lug/2013 15:49:37] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[16/lug/2013 15:49:37] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[16/lug/2013 15:49:37] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[16/lug/2013 15:49:44] [admin:admin] INFO - 
+
+=====================
+ OpenHospital closed 
+=====================
+ (org.isf.menu.gui.MainMenu.actionExit(MainMenu.java:257))
+[16/lug/2013 15:51:43] [:] INFO - 
+
+=====================
+Starting OpenHospital
+=====================
+ (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
+[16/lug/2013 15:51:43] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[16/lug/2013 15:51:43] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[16/lug/2013 15:51:46] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[16/lug/2013 15:51:46] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[16/lug/2013 15:51:46] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[16/lug/2013 15:51:46] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[16/lug/2013 15:51:46] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[16/lug/2013 15:52:16] [admin:admin] INFO - 
 
 =====================
  OpenHospital closed 

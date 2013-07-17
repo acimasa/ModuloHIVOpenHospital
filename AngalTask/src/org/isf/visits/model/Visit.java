@@ -14,7 +14,7 @@ public class Visit extends GregorianCalendar {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String note;
-	private Patient Pat; //Paziente al quale è legata la visita
+	private Patient Pat; //Paziente al quale ï¿½ legata la visita
 	private int VisitId; //Id univoco della visita
 	public Visit() {
 		super();
@@ -29,13 +29,13 @@ public class Visit extends GregorianCalendar {
 
 	public Visit(int year, int month, int dayOfMonth, int hourOfDay,
 			int minute,Patient pat) {
-		
+		super(year, month, dayOfMonth, hourOfDay, minute);
 		// TODO Auto-generated constructor stub
 		//Prima di creare la visita un certo giorno richiamo la funzione che verifica
-		//la possibilità di inserire una visita quel giorno
+		//la possibilitï¿½ di inserire una visita quel giorno
 		if(verifyVisit(year,month,dayOfMonth,hourOfDay,minute)==true)
 		{
-			super(year, month, dayOfMonth, hourOfDay, minute);
+			
 			this.setPat(pat);
 		}
 		else //genera visita automaticamente
@@ -84,26 +84,27 @@ public class Visit extends GregorianCalendar {
 	
 	public void setPat(Patient pat)
 	{
-		this.Pat=Patient;
+		this.Pat=pat;
 	}
 	
 	public Patient getPat()
 	{
 		return this.Pat;
 	}
-	/*Questo metodo verifica la possiblità di inserire una visita nel
+	/*Questo metodo verifica la possiblitï¿½ di inserire una visita nel
 	 * giorno selezionato dall'operatore
 	 */
 	
-	public bool verifyVisit (int year,int month,int dayOfMonth,int hourOfDay,int minute)
+	public boolean verifyVisit (int year,int month,int dayOfMonth,int hourOfDay,int minute)
 	{
-		VisitManager Manager=Manager.getInstance();
+		/*VisitManager Manager=Manager.getInstance();
 		//prelevo i giorni lavorativi
 		//prelevo i giorni non lavorativi
 		//verifico che dayOfMonth non sia un giorno non lavorativo
 		//verifico che dayOfmoth faccia parte dei giorni lavorativi
 		//prelevo il numero di appuntamento fissati quel giorno
-		//verifico se si è già raggiunto il numero di appuntamenti max
-		//se non si è raggiunto restituisco true altrimenti false
+		//verifico se si e' giÃ  raggiunto il numero di appuntamenti max
+		//se non si e' raggiunto restituisco true altrimenti false*/
+		return true;
 	}
 }

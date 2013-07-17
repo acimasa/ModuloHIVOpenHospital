@@ -58,7 +58,7 @@ public class Server {
 			chat = connection.getChatManager().createChat(to,id+user,listner);
 		}
 		else{
-			System.out.println("chat già esistente con: "+to+" id= "+id );
+			System.out.println("chat giÃ  esistente con: "+to+" id= "+id );
 			chat= connection.getChatManager().getThreadChat(id+user);
 		}
 		return chat;
