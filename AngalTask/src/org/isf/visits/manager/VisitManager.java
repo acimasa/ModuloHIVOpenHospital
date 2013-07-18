@@ -5,12 +5,14 @@ package org.isf.visits.manager;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import org.isf.patient.model.Patient;
 import org.isf.utils.exception.OHException;
 import org.isf.visits.model.Visit;
 import org.isf.visits.service.IoOperations;
+import org.isf.visits.gui.ImpostaScheduler;
 
 /**
  * @author Nanni
@@ -66,5 +68,13 @@ public class VisitManager {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 			return false;
 		}
+	}
+	/* Mostra a schermo la finestra per la configurazione dello
+	 * scheduler
+	 */
+	public void showSchedulerConfig()
+	{
+		ImpostaScheduler Imp = new ImpostaScheduler();
+		Imp.setVisible(true);
 	}
 }
