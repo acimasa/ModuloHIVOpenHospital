@@ -11,9 +11,10 @@ import javax.swing.JOptionPane;
 import org.isf.patient.model.Patient;
 import org.isf.utils.exception.OHException;
 import org.isf.visits.model.Visit;
+import org.isf.visits.model.WorkingDay;
 import org.isf.visits.service.IoOperations;
 import org.isf.visits.gui.ImpostaScheduler;
-
+import java.util.Date;
 /**
  * @author Nanni
  *
@@ -76,5 +77,27 @@ public class VisitManager {
 	{
 		ImpostaScheduler Imp = new ImpostaScheduler();
 		Imp.setVisible(true);
+	}
+	
+	public WorkingDay[] giveWorkingDaysfromDB()
+	{
+		try
+		{
+			return ioOperations.getWorkingDays();
+		} catch (OHException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+			return null;
+		}
+	}
+	
+	public Date[] giveNoWorkingDaysfromDB()
+	{
+		try
+		{
+			return ioOperations.getNoWorkingDays();
+		} catch (OHException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+			return null;
+		}
 	}
 }
