@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="patient_clinical_sheet_ver2"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="AllSectionsNoDetail"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="patientID" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["./rpt/"]]></defaultValueExpression>
+	</parameter>
+	<queryString><![CDATA[SELECT TYPE, DATE, NOTE, DETAILS_1, DETAILS_2, DETAILS_3, DETAILS_4
+FROM (
+SELECT "Opd" AS TYPE,
+	   DATE(OPD_DATE_VIS) AS DATE,
+	   OPD_NOTE AS NOTE,
+	   IF(OPD_NEW_PAT='N','New Attendance','Re-Attendance') AS DETAILS_1,
+	   CONCAT((SELECT DIS_DESC FROM DISEASE WHERE DIS_ID_A = OPD_DIS_ID_A)) AS DETAILS_2,
+	   CONCAT(" + ", (SELECT DIS_DESC FROM DISEASE WHERE DIS_ID_A = OPD_DIS_ID_A_2), " & ", (SELECT DIS_DESC FROM DISEASE WHERE DIS_ID_A = OPD_DIS_ID_A_3)) AS DETAILS_3,
+	   "" AS DETAILS_4
+	FROM 
+		OPD  
+	WHERE OPD_PAT_ID = $P{patientID}
+	
+UNION
+
+SELECT "Admission" AS TYPE,
+	   DATE(ADM_DATE_ADM) AS DATE,
+	   ADM_NOTE AS NOTE,
+	   CONCAT(WRD_NAME, " - ", (SELECT DIS_DESC FROM DISEASE WHERE DIS_ID_A = ADM_IN_DIS_ID_A)) AS DETAILS_1,
+	   CONCAT(DIST_DESC, " - ", (SELECT DIS_DESC FROM DISEASE WHERE DIS_ID_A = ADM_OUT_DIS_ID_A), " - ", DATE_FORMAT(DATE(ADM_DATE_DIS), '%d/%m/%Y')) AS DETAILS_2,
+	   "" AS DETAILS_3,
+	   "" AS DETAILS_4
+	FROM 
+		ADMISSION  
+		LEFT JOIN WARD ON (WRD_ID_A = ADM_WRD_ID_A) 
+		LEFT JOIN ADMISSIONTYPE ON (ADMT_ID_A = ADM_ADMT_ID_A_ADM)
+		LEFT JOIN DISCHARGETYPE ON (DIST_ID_A = ADM_DIST_ID_A)
+	WHERE ADM_DELETED = 'N'
+		AND ADM_PAT_ID = $P{patientID} 
+
+UNION
+
+SELECT "Medicals" AS TYPE,
+	   DATE(MMVN_DATE) AS DATE,
+	   "" AS NOTE,
+	   CONCAT(MDSR_DESC, " - ", MMVN_MDSR_QTY, " ", MMVN_MDSR_UNITS) AS DETAILS_1,
+	   "" AS DETAILS_2,
+	   "" AS DETAILS_3,
+	   "" AS DETAILS_4
+	FROM 
+		MEDICALDSRSTOCKMOVWARD  
+		LEFT JOIN MEDICALDSR ON (MMVN_MDSR_ID = MDSR_ID) 
+	WHERE MMVN_PAT_ID = $P{patientID}
+	
+UNION
+
+SELECT "Laboratory" AS TYPE,
+	   DATE(LAB_EXAM_DATE) AS DATE,
+	   LAB_NOTE AS NOTE,
+	   EXA_DESC DETAILS_1,
+	   LAB_RES AS DETAILS_2,
+	   "" AS DETAILS_3,
+	   "" AS DETAILS_4
+	FROM 
+		LABORATORY  
+		LEFT JOIN EXAM ON (EXA_ID_A = LAB_EXA_ID_A) 
+		LEFT JOIN LABORATORYROW ON LABR_LAB_ID = LAB_ID
+	WHERE LAB_PAT_ID = $P{patientID} 
+    AND EXA_PROC = 1
+    
+UNION
+
+SELECT "Laboratory" AS TYPE,
+	   DATE(LAB_EXAM_DATE) AS DATE,
+	   LAB_NOTE AS NOTE,
+	   EXA_DESC DETAILS_1,
+	   GROUP_CONCAT(LABR_DESC SEPARATOR ", " ) AS DETAILS_2,
+	   "" AS DETAILS_3,
+	   "" AS DETAILS_4
+	FROM 
+		LABORATORY  
+		LEFT JOIN EXAM ON (EXA_ID_A = LAB_EXA_ID_A) 
+		LEFT JOIN LABORATORYROW ON LABR_LAB_ID = LAB_ID
+	WHERE LAB_PAT_ID = $P{patientID} 
+    AND EXA_PROC = 2
+GROUP BY LABR_LAB_ID
+) AS DETAILS
+ORDER BY DATE DESC]]></queryString>
+
+	<field name="TYPE" class="java.lang.String"/>
+	<field name="DATE" class="java.sql.Date"/>
+	<field name="NOTE" class="java.lang.String"/>
+	<field name="DETAILS_1" class="java.lang.String"/>
+	<field name="DETAILS_2" class="java.lang.String"/>
+	<field name="DETAILS_3" class="java.lang.String"/>
+	<field name="DETAILS_4" class="java.lang.String"/>
+
+
+		<group  name="DATE" >
+			<groupExpression><![CDATA[$F{DATE}]]></groupExpression>
+			<groupHeader>
+			<band height="18"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="97"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="0"
+						width="164"
+						height="21"
+						key="staticText-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[ PATIENT CLINICAL SHEET]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="164"
+						y="8"
+						width="73"
+						height="13"
+						key="staticText-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+				<text><![CDATA[version 2.0]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="22"
+						width="350"
+						height="11"
+						key="staticText-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+				<text><![CDATA[this report list all the admissions ad laboratory examx for the pationt, more recent information as first]]></text>
+				</staticText>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="0"
+						y="42"
+						width="535"
+						height="55"
+						key="subreport-1"/>
+					<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "patient_clinical_sheet_patsubreport.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="85"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" pattern="dd/MM/yyyy" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="13"
+						width="65"
+						height="13"
+						key="textField-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$F{DATE}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="dd/MM/yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="0"
+						width="65"
+						height="13"
+						key="textField-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{TYPE}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="75"
+						y="52"
+						width="460"
+						height="33"
+						key="textField-3"
+						isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Oblique" isItalic="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{NOTE}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="dd/MM/yyyy" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="75"
+						y="0"
+						width="460"
+						height="13"
+						key="textField-4"
+						isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{DETAILS_1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="dd/MM/yyyy" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="75"
+						y="13"
+						width="460"
+						height="13"
+						key="textField-5"
+						isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{DETAILS_2}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="dd/MM/yyyy" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="75"
+						y="26"
+						width="460"
+						height="13"
+						key="textField-6"
+						isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{DETAILS_3}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="dd/MM/yyyy" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="75"
+						y="39"
+						width="460"
+						height="13"
+						key="textField-7"
+						isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{DETAILS_4}]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="14"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" pattern="dd/MM/yyyy" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="0"
+						width="100"
+						height="14"
+						key="textField-8"/>
+					<box leftPadding="2" topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="328"
+						y="0"
+						width="150"
+						height="14"
+						key="textField-9"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="485"
+						y="0"
+						width="43"
+						height="14"
+						key="textField-10"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["" + $V{PAGE_NUMBER} + ""]]></textFieldExpression>
+				</textField>
+			</band>
+		</pageFooter>
+		<lastPageFooter>
+			<band height="14"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" pattern="dd/MM/yyyy" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="0"
+						width="100"
+						height="14"
+						key="textField-11"/>
+					<box leftPadding="2" topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="328"
+						y="0"
+						width="150"
+						height="14"
+						key="textField-12"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="485"
+						y="0"
+						width="43"
+						height="14"
+						key="textField-13"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["" + $V{PAGE_NUMBER} + ""]]></textFieldExpression>
+				</textField>
+			</band>
+		</lastPageFooter>
+		<summary>
+			<band height="50"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>
