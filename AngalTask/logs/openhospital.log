@@ -1,68 +1,215 @@
-[19/lug/2013 12:08:35] [:] INFO - 
+[20/lug/2013 15:49:07] [:] INFO - 
 
 =====================
 Starting OpenHospital
 =====================
  (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
-[19/lug/2013 12:08:36] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
-[19/lug/2013 12:08:36] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
-[19/lug/2013 12:08:39] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
-[19/lug/2013 12:08:39] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
-[19/lug/2013 12:08:39] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[19/lug/2013 12:08:39] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[19/lug/2013 12:08:39] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[19/lug/2013 12:10:03] [:] INFO - 
-
-=====================
-Starting OpenHospital
-=====================
- (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
-[19/lug/2013 12:10:04] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
-[19/lug/2013 12:10:04] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
-[19/lug/2013 12:10:07] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
-[19/lug/2013 12:10:07] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
-[19/lug/2013 12:10:07] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[19/lug/2013 12:10:07] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[19/lug/2013 12:10:07] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[19/lug/2013 15:11:06] [admin:admin] INFO - 
+[20/lug/2013 15:49:08] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[20/lug/2013 15:49:08] [:] INFO - Java version 1.7.0_07 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[20/lug/2013 15:49:11] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[20/lug/2013 15:49:11] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[20/lug/2013 15:49:11] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[20/lug/2013 15:49:11] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 15:49:11] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 15:49:41] [admin:admin] INFO - 
 
 =====================
  OpenHospital closed 
 =====================
  (org.isf.menu.gui.MainMenu.actionExit(MainMenu.java:257))
-[19/lug/2013 16:23:17] [:] INFO - 
+[20/lug/2013 15:57:58] [:] INFO - 
 
 =====================
 Starting OpenHospital
 =====================
  (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
-[19/lug/2013 16:23:17] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
-[19/lug/2013 16:23:17] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
-[19/lug/2013 16:23:20] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
-[19/lug/2013 16:23:20] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
-[19/lug/2013 16:23:20] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[19/lug/2013 16:23:20] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[19/lug/2013 16:23:20] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[19/lug/2013 16:26:20] [admin:admin] INFO - 
+[20/lug/2013 15:57:58] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[20/lug/2013 15:57:58] [:] INFO - Java version 1.7.0_07 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[20/lug/2013 15:58:02] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[20/lug/2013 15:58:02] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[20/lug/2013 15:58:02] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[20/lug/2013 15:58:02] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 15:58:02] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:01:19] [:] INFO - 
+
+=====================
+Starting OpenHospital
+=====================
+ (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
+[20/lug/2013 16:01:20] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[20/lug/2013 16:01:20] [:] INFO - Java version 1.7.0_07 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[20/lug/2013 16:01:23] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[20/lug/2013 16:01:23] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[20/lug/2013 16:01:23] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[20/lug/2013 16:01:23] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:01:23] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:24:19] [:] INFO - 
+
+=====================
+Starting OpenHospital
+=====================
+ (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
+[20/lug/2013 16:24:20] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[20/lug/2013 16:24:20] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[20/lug/2013 16:24:23] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[20/lug/2013 16:24:23] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[20/lug/2013 16:24:23] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[20/lug/2013 16:24:23] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:24:23] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:26:42] [:] INFO - 
+
+=====================
+Starting OpenHospital
+=====================
+ (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
+[20/lug/2013 16:26:42] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[20/lug/2013 16:26:42] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[20/lug/2013 16:26:45] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[20/lug/2013 16:26:45] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[20/lug/2013 16:26:45] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[20/lug/2013 16:26:45] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:26:45] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:44:56] [:] INFO - 
+
+=====================
+Starting OpenHospital
+=====================
+ (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
+[20/lug/2013 16:44:56] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[20/lug/2013 16:44:56] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[20/lug/2013 16:44:59] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[20/lug/2013 16:44:59] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[20/lug/2013 16:44:59] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[20/lug/2013 16:44:59] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:44:59] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:45:51] [admin:admin] INFO - 
 
 =====================
  OpenHospital closed 
 =====================
  (org.isf.menu.gui.MainMenu.actionExit(MainMenu.java:257))
-[19/lug/2013 17:06:18] [:] INFO - 
+[20/lug/2013 16:46:00] [:] INFO - 
 
 =====================
 Starting OpenHospital
 =====================
  (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
-[19/lug/2013 17:06:18] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
-[19/lug/2013 17:06:18] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
-[19/lug/2013 17:06:22] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
-[19/lug/2013 17:06:22] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
-[19/lug/2013 17:06:22] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
-[19/lug/2013 17:06:22] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[19/lug/2013 17:06:22] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
-[19/lug/2013 17:08:39] [admin:admin] INFO - 
+[20/lug/2013 16:46:00] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[20/lug/2013 16:46:00] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[20/lug/2013 16:46:03] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[20/lug/2013 16:46:03] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[20/lug/2013 16:46:03] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[20/lug/2013 16:46:03] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:46:03] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:49:26] [:] INFO - 
+
+=====================
+Starting OpenHospital
+=====================
+ (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
+[20/lug/2013 16:49:26] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[20/lug/2013 16:49:26] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[20/lug/2013 16:49:29] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[20/lug/2013 16:49:29] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[20/lug/2013 16:49:29] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[20/lug/2013 16:49:29] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:49:29] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:51:45] [admin:admin] INFO - 
+
+=====================
+ OpenHospital closed 
+=====================
+ (org.isf.menu.gui.MainMenu.actionExit(MainMenu.java:257))
+[20/lug/2013 16:53:57] [:] INFO - 
+
+=====================
+Starting OpenHospital
+=====================
+ (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
+[20/lug/2013 16:53:58] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[20/lug/2013 16:53:58] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[20/lug/2013 16:54:01] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[20/lug/2013 16:54:01] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[20/lug/2013 16:54:01] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[20/lug/2013 16:54:01] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:54:01] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:54:24] [admin:admin] INFO - 
+
+=====================
+ OpenHospital closed 
+=====================
+ (org.isf.menu.gui.MainMenu.actionExit(MainMenu.java:257))
+[20/lug/2013 16:55:57] [admin:admin] INFO - 
+
+=====================
+ OpenHospital closed 
+=====================
+ (org.isf.menu.gui.MainMenu.actionExit(MainMenu.java:257))
+[20/lug/2013 16:58:12] [:] INFO - 
+
+=====================
+Starting OpenHospital
+=====================
+ (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
+[20/lug/2013 16:58:12] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[20/lug/2013 16:58:12] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[20/lug/2013 16:58:15] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[20/lug/2013 16:58:15] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[20/lug/2013 16:58:15] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[20/lug/2013 16:58:15] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:58:15] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:59:17] [:] INFO - 
+
+=====================
+Starting OpenHospital
+=====================
+ (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
+[20/lug/2013 16:59:18] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[20/lug/2013 16:59:18] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[20/lug/2013 16:59:21] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[20/lug/2013 16:59:21] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[20/lug/2013 16:59:21] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[20/lug/2013 16:59:21] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:59:21] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 16:59:48] [admin:admin] INFO - 
+
+=====================
+ OpenHospital closed 
+=====================
+ (org.isf.menu.gui.MainMenu.actionExit(MainMenu.java:257))
+[20/lug/2013 17:01:44] [:] INFO - 
+
+=====================
+Starting OpenHospital
+=====================
+ (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
+[20/lug/2013 17:01:44] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[20/lug/2013 17:01:44] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[20/lug/2013 17:01:48] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[20/lug/2013 17:01:48] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[20/lug/2013 17:01:48] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[20/lug/2013 17:01:48] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 17:01:48] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 17:02:14] [admin:admin] INFO - 
+
+=====================
+ OpenHospital closed 
+=====================
+ (org.isf.menu.gui.MainMenu.actionExit(MainMenu.java:257))
+[20/lug/2013 17:03:25] [:] INFO - 
+
+=====================
+Starting OpenHospital
+=====================
+ (org.isf.menu.gui.Menu.createAndShowGUI(Menu.java:24))
+[20/lug/2013 17:03:25] [:] INFO - OpenHospital version 1.7.2 (org.isf.menu.gui.Menu.checkOHVersion(Menu.java:33))
+[20/lug/2013 17:03:25] [:] INFO - Java version 1.7.0_21 (org.isf.menu.gui.Menu.checkJavaVersion(Menu.java:39))
+[20/lug/2013 17:03:28] [:] INFO - File generalData.properties loaded.  (org.isf.generaldata.GeneralData.<init>(GeneralData.java:88))
+[20/lug/2013 17:03:28] [:] INFO - Logging: Single User mode. (org.isf.menu.gui.MainMenu.<init>(MainMenu.java:114))
+[20/lug/2013 17:03:28] [admin:admin] DEBUG - Query select mn.*,GROUPMENU.GM_ACTIVE from USERGROUP inner join USER on US_UG_ID_A=UG_ID_A  inner join GROUPMENU on UG_ID_A=GM_UG_ID_A inner join MENUITEM as mn on  GM_MNI_ID_A=mn.MNI_ID_A where US_ID_A = ? order by MNI_POSITION (org.isf.utils.db.DbQueryLogger.getDataWithParams(DbQueryLogger.java:62))
+[20/lug/2013 17:03:28] [admin:admin] ERROR - >> key not found: angal.menu.btn.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 17:03:28] [admin:admin] ERROR - >> key not found: angal.test.test (org.isf.generaldata.MessageBundle.getMessage(MessageBundle.java:42))
+[20/lug/2013 17:06:19] [admin:admin] INFO - 
 
 =====================
  OpenHospital closed 

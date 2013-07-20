@@ -11,16 +11,21 @@ import javax.swing.JComboBox;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.DefaultComboBoxModel;
 
+import org.isf.visits.manager.VisitManager;
 import org.isf.visits.model.WorkingDay;
 
 import java.awt.Dialog.ModalityType;
 import java.util.ArrayList;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class InsertWorkingDay extends JDialog {
 
+	private final VisitManager		Man;
 	private final JPanel contentPanel = new JPanel();
 	private final String Ore[];
 	private final String Minuti[];
@@ -48,10 +53,13 @@ public class InsertWorkingDay extends JDialog {
 	private 		JLabel 			lblTo;
 	private 		JLabel 			lblBreakFrom;
 	private 		JLabel 			lblEndAt;
-	private 		WorkingDay		GiornoLavorativo;
+	private final MouseAdapter 		Azione;
+	private 	  JButton 			okButton;
+	private 	  JButton 			cancelButton;
 	
-	public InsertWorkingDay(ArrayList GiorniLav) 
+	public InsertWorkingDay(final ArrayList <WorkingDay> GiorniLav) 
 	{
+		Man					= 	VisitManager.getInstance();
 		Ore					=	new String[]{"1", "2", "3", "4", 
 								"5", "6", "7","8","9",
 								"10","11","12","13","14",
@@ -75,6 +83,8 @@ public class InsertWorkingDay extends JDialog {
 		lblTo 				= 	new JLabel("to");
 		lblBreakFrom 		= 	new JLabel("Break from");
 		lblEndAt 			= 	new JLabel("End at");
+		okButton			=	new JButton("Ok");
+		cancelButton		=	new JButton("Cancel");
 		comboDayBox 		= 	new JComboBox();
 		startHourBox	 	= 	new JComboBox();
 		startMinuteBox 		= 	new JComboBox();
@@ -86,6 +96,32 @@ public class InsertWorkingDay extends JDialog {
 		endMinuteBreakBox 	= 	new JComboBox();
 		gl_contentPanel 	= 	new GroupLayout(contentPanel);
 		startHourBox.setModel(OreStartModel);
+		Azione				=  	new MouseAdapter()
+		{
+			public void mouseClicked(MouseEvent e)
+			{
+				if(e.getSource().equals(okButton))
+				{
+					WorkingDay Giorno= getWorkingDay();
+					//Verifico che il giorno non sia già presente in lista
+					if (verificaPresGiorno(Giorno,GiorniLav)==false)
+					{
+						GiorniLav.add(Giorno);
+						Giorno.notifyObservers(Giorno);
+						dispose();
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null,"Attenzione Giorno già presente!", 
+						"Errore",JOptionPane.OK_OPTION);	
+					}
+				}
+				else
+				{
+					dispose();
+				}
+			}
+		};
 		
 		setResizable(false);
 		setTitle("Working Day Settings");
@@ -164,16 +200,68 @@ public class InsertWorkingDay extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
+				okButton.addMouseListener(Azione);
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
+				cancelButton.addMouseListener(Azione);
 				buttonPane.add(cancelButton);
 			}
 		}
 	}
+	/*
+	 * Preleva il giorno lavorativo dalla GUI e ritorna il tipo
+	 * WorkingDay correttamente istanziato e inizializzato con
+	 * i valore prelevati
+	 */
+	private WorkingDay getWorkingDay()
+	{	
+		Integer Convertitore;
+		WorkingDay GiornoLavorativo = new WorkingDay();
+		GiornoLavorativo.setDay((String)comboDayBox.getSelectedItem());
+		
+		Convertitore= new Integer((String)endHourBox.getSelectedItem());
+		GiornoLavorativo.setEndHour(Convertitore.intValue());
+		
+		Convertitore= new Integer((String)endHourBreakBox.getSelectedItem());
+		GiornoLavorativo.setEndHourPause(Convertitore.intValue());
+		
+		Convertitore= new Integer((String)endMinuteBox.getSelectedItem());
+		GiornoLavorativo.setEndMinute(Convertitore.intValue());
+		
+		Convertitore= new Integer((String)endMinuteBreakBox.getSelectedItem());
+		GiornoLavorativo.setEndMinutePause(Convertitore.intValue());
+		
+		Convertitore= new Integer((String)startHourBox.getSelectedItem());
+		GiornoLavorativo.setStartHour(Convertitore.intValue());
+		
+		Convertitore= new Integer((String)starHourBreakBox.getSelectedItem());
+		GiornoLavorativo.setStartHourPause(Convertitore.intValue());
+		
+		Convertitore= new Integer((String)startMinuteBox.getSelectedItem());
+		GiornoLavorativo.setStartMinute(Convertitore.intValue());
+		
+		Convertitore= new Integer((String)startMinuteBreakBox.getSelectedItem());
+		GiornoLavorativo.setStartMinutePause(Convertitore.intValue());
+		
+		Convertitore=null;
+		//Setto l'observer del model WorkingDay
+		GiornoLavorativo.addObserver(Man.getViewImpostaScheduler());
+		return GiornoLavorativo;
+	}
+	/*
+	 * Questa funzione verifica che il giorno lavorativo che l'utente ha intezione di inserire
+	 * non sia già presente nella lista dei giorno lavorativi.
+	 * Se è presente ritorna TRUE
+	 * altrimenti ritorna FALSE
+	 */
+	private boolean verificaPresGiorno(WorkingDay Giorno,ArrayList<WorkingDay> GiorniLav)
+	{
+		if(GiorniLav.contains(Giorno)==true)
+			return true;
+		else
+			return false;
+	}
 }
+

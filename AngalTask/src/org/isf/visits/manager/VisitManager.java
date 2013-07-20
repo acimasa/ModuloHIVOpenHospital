@@ -14,15 +14,28 @@ import org.isf.visits.model.Visit;
 import org.isf.visits.model.WorkingDay;
 import org.isf.visits.service.IoOperations;
 import org.isf.visits.gui.ImpostaScheduler;
+import org.isf.visits.gui.InsertWorkingDay;
+
 import java.util.Date;
 /**
  * @author Nanni
+ * @Updated by Alfonso
  *
  */
 public class VisitManager {
 	
-	private IoOperations ioOperations = new IoOperations();
+	private IoOperations 			ioOperations;
+	private ImpostaScheduler 		Imp;
+	private InsertWorkingDay		InsertWD;
+	private ArrayList<WorkingDay>	GiorniLavorativi;
+	private static VisitManager 	instance;
 	
+	private VisitManager()
+	{
+		ioOperations	= 	new IoOperations();
+		GiorniLavorativi= 	new ArrayList<WorkingDay>();
+		instance		= 	this;
+	}
 	/**
 	 * returns the list of all {@link Visit}s related to a patID
 	 * 
@@ -75,11 +88,17 @@ public class VisitManager {
 	 */
 	public void showSchedulerConfig()
 	{
-		ImpostaScheduler Imp = new ImpostaScheduler();
+		Imp = new ImpostaScheduler();
 		Imp.setVisible(true);
 	}
 	
-	public WorkingDay[] giveWorkingDaysfromDB()
+	public void showInsertWorkingDay()
+	{
+		InsertWD = new InsertWorkingDay(GiorniLavorativi);
+		InsertWD.setVisible(true);
+	}
+	
+	/*public ArrayList<WorkingDay> giveWorkingDaysfromDB()
 	{
 		try
 		{
@@ -88,9 +107,9 @@ public class VisitManager {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 			return null;
 		}
-	}
+	}*/
 	
-	public Date[] giveNoWorkingDaysfromDB()
+	/*public Date[] giveNoWorkingDaysfromDB()
 	{
 		try
 		{
@@ -99,5 +118,23 @@ public class VisitManager {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 			return null;
 		}
+	}*/
+	
+	public ImpostaScheduler getViewImpostaScheduler()
+	{
+		return this.Imp;
+	}
+	
+	public static VisitManager getInstance()
+	{
+		if(instance==null)
+			return new VisitManager();
+		else
+			return instance;
+	}
+	
+	public ArrayList<WorkingDay> getModelWorkingDay()
+	{
+		return this.GiorniLavorativi;
 	}
 }

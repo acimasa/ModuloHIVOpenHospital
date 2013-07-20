@@ -40,7 +40,7 @@ public class Menu extends ModalJFrame{
 		SearchBtn			=	new JButton("SearchTest");
 		SettingsBtn 		= 	new JButton("SettingsTest");
 		MenuPanel			= 	new JPanel();
-		visitMan			=	new VisitManager();
+		visitMan			=	VisitManager.getInstance();
 		//Creo l'azione che sarà eseguita in seguito alla pressione
 		//di specifici tasti
 		Azione				= 	new MouseAdapter(){

@@ -17,22 +17,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 import org.isf.visits.model.WorkingDay;
 import org.isf.visits.manager.VisitManager;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 
-public class ImpostaScheduler extends JFrame {
+public class ImpostaScheduler extends JFrame implements Observer{
 
 	private final JPanel 			contentPane;
 	private final JTable 			VisitDayTable;
 	private final JTable 			NoVisitDayTable;
 	private final VisitManager 		Manager;
-	//private final WorkingDay[]		GiornoLavorativo;
-	private final ArrayList<WorkingDay> GiorniLavorativi;
 	private final MouseAdapter 		Azione;
 	private final JScrollPane 		scrollPaneVisitDayTab;
 	private final JButton			btnModifyVisitDay;
@@ -42,7 +44,6 @@ public class ImpostaScheduler extends JFrame {
 	private final JButton 			btnAddVisitDay;
 	private final JButton 			btnRmNoVisitDay;
 	private final JComboBox 		comboBox;
-	private		  InsertWorkingDay 	InsertDay;
 	JLabel lblTimePerVisit;
 	JButton btnSave;
 	JButton btnCancel;
@@ -69,8 +70,7 @@ public class ImpostaScheduler extends JFrame {
 	public ImpostaScheduler() {
 		setTitle("Scheduler Settings");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		Manager			 			=	new VisitManager();
-		GiorniLavorativi			=	new ArrayList<WorkingDay>();
+		Manager			 			=	VisitManager.getInstance();
 		scrollPaneVisitDayTab 		= 	new JScrollPane();
 		btnModifyVisitDay 			= 	new JButton("Modify Visit Day");
 		btnRemoveVisitDay 			= 	new JButton("Remove Visit Day");
@@ -85,17 +85,20 @@ public class ImpostaScheduler extends JFrame {
 		btnCancel 					= 	new JButton("Cancel");
 		gl_contentPane 				= 	new GroupLayout(contentPane);
 		NoVisitDayTable 			= 	new JTable();
-		VisitDayTable 				= 	new JTable();
+		VisitDayTable 				= 	new JTable(){
+										public boolean isCellEditable(int row, int col) {
+											return false;
+										}};
 		Azione 						= 	new MouseAdapter()
 		{
 			public void mouseClicked(MouseEvent e)
 			{
 				if(e.getSource().equals(btnAddVisitDay))
 				{
-					InsertDay = new InsertWorkingDay(GiorniLavorativi);
-					InsertDay.setVisible(true);
+					Manager.showInsertWorkingDay();
 				}
 			}
+			
 		};
 		
 		setBounds(100, 100, 558, 463);
@@ -198,4 +201,24 @@ public class ImpostaScheduler extends JFrame {
 		 */
 		
 	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) 
+	{
+		DefaultTableModel Nuovo 	= 	new DefaultTableModel();
+		Nuovo.addColumn("Day");
+		Nuovo.addColumn("From");
+		Nuovo.addColumn("To");
+		Nuovo.addColumn("Break From");
+		Nuovo.addColumn("Break To");
+		for(WorkingDay i : Manager.getModelWorkingDay())
+		{
+			System.out.println(i.getDay());
+			Nuovo.addRow(new String[]{i.getDay(),i.getStartHour()+":"+i.getStartMinute(),
+					+i.getEndHour()+":"+i.getEndMinute(),i.getStartHourPause()+":"+i.getStartMinutePause(),
+					i.getEndHourPause()+":"+i.getEndMinutePause()});
+		}
+		VisitDayTable.setModel(Nuovo);
+	}
+	
 }

@@ -129,10 +129,10 @@ public class TherapyEdit extends JDialog {
 	private static final int AllButtonHeight = 30;
 
 	private static final long serialVersionUID = 1L;
-
+	
+	private VisitManager vstManager= VisitManager.getInstance();
 	private MedicalBrowsingManager medBrowser = new MedicalBrowsingManager();
 	private TherapyManager thManager = new TherapyManager();
-	private VisitManager vstManager = new VisitManager();
 	private ArrayList<Medical> medArray = medBrowser.getMedicals();
 	private ArrayList<Double> qtyArray = new ArrayList<Double>();
 	private ArrayList<Therapy> therapies = new ArrayList<Therapy>();
