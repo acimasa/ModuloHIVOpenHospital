@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout;
@@ -23,6 +24,7 @@ import java.util.Observer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import org.isf.visits.model.ListWorkingDay;
 import org.isf.visits.model.WorkingDay;
 import org.isf.visits.manager.VisitManager;
 import javax.swing.JComboBox;
@@ -44,29 +46,13 @@ public class ImpostaScheduler extends JFrame implements Observer{
 	private final JButton 			btnAddVisitDay;
 	private final JButton 			btnRmNoVisitDay;
 	private final JComboBox 		comboBox;
-	JLabel lblTimePerVisit;
-	JButton btnSave;
-	JButton btnCancel;
-	GroupLayout gl_contentPane;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ImpostaScheduler frame = new ImpostaScheduler();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private ArrayList <WorkingDay> 	GiorniRimossi;
+	private ListWorkingDay 			ListaGiorniLavorativi;
+	private JLabel 					lblTimePerVisit;
+	private JButton 				btnSave;
+	private JButton 				btnCancel;
+	private GroupLayout 			gl_contentPane;
 
-	/**
-	 * Create the frame.
-	 */
 	public ImpostaScheduler() {
 		setTitle("Scheduler Settings");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -89,6 +75,8 @@ public class ImpostaScheduler extends JFrame implements Observer{
 										public boolean isCellEditable(int row, int col) {
 											return false;
 										}};
+		GiorniRimossi				=	new ArrayList <WorkingDay>();
+		ListaGiorniLavorativi		=	Manager.getListWorkingDay();
 		Azione 						= 	new MouseAdapter()
 		{
 			public void mouseClicked(MouseEvent e)
@@ -96,6 +84,30 @@ public class ImpostaScheduler extends JFrame implements Observer{
 				if(e.getSource().equals(btnAddVisitDay))
 				{
 					Manager.showInsertWorkingDay();
+				}
+				else if(e.getSource().equals(btnRemoveVisitDay))
+				{
+					WorkingDay GiornoRimosso	= new WorkingDay();
+					int riga					= VisitDayTable.getSelectedRow();
+					if(riga!=-1)
+					{
+						GiornoRimosso.setDay(VisitDayTable.getValueAt(riga, 0).toString());
+						//salvo la lista dei giorni rimossi, per rimuoverli dal DB
+						GiorniRimossi.add(GiornoRimosso);
+						Manager.removeWD(GiornoRimosso);
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null,"No row selected","Error", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				else if(e.getSource().equals(btnModifyVisitDay))
+				{
+					Manager.showModWorkingDay();
+				}
+				else if(e.getSource().equals(btnAddNoVisitDay))
+				{
+					Manager.showInsertNoWorkingDay();
 				}
 			}
 			
@@ -107,6 +119,8 @@ public class ImpostaScheduler extends JFrame implements Observer{
 		btnAddVisitDay.addMouseListener(Azione);
 		btnAddNoVisitDay.addMouseListener(Azione);
 		btnRmNoVisitDay.addMouseListener(Azione);
+		btnRemoveVisitDay.addMouseListener(Azione);
+		btnModifyVisitDay.addMouseListener(Azione);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"10", "20", "30", "40", "50", "60", "70", "80", "90", "100", "110", "120"}));
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -181,13 +195,14 @@ public class ImpostaScheduler extends JFrame implements Observer{
 		});
 		NoVisitDayTable.getColumnModel().getColumn(0).setResizable(false);
 		scrollPaneNoVisitDayTab.setViewportView(NoVisitDayTable);
-		VisitDayTable.setModel(new DefaultTableModel(
+		/*VisitDayTable.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
 				"Day", "From", "To", "Break From", "Break To"
 			}
-		));
+		));*/
+		update(null,null);
 		scrollPaneVisitDayTab.setViewportView(VisitDayTable);
 		contentPane.setLayout(gl_contentPane);
 		init();
@@ -205,13 +220,14 @@ public class ImpostaScheduler extends JFrame implements Observer{
 	@Override
 	public void update(Observable arg0, Object arg1) 
 	{
-		DefaultTableModel Nuovo 	= 	new DefaultTableModel();
+		DefaultTableModel Nuovo 	  = 	new DefaultTableModel();
+		ArrayList <WorkingDay> Giorni =		Manager.getListWorkingDay().GiorniLavorativi;
 		Nuovo.addColumn("Day");
 		Nuovo.addColumn("From");
 		Nuovo.addColumn("To");
 		Nuovo.addColumn("Break From");
 		Nuovo.addColumn("Break To");
-		for(WorkingDay i : Manager.getModelWorkingDay())
+		for(WorkingDay i : Giorni)
 		{
 			System.out.println(i.getDay());
 			Nuovo.addRow(new String[]{i.getDay(),i.getStartHour()+":"+i.getStartMinute(),

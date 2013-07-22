@@ -16,10 +16,13 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.DefaultComboBoxModel;
 
 import org.isf.visits.manager.VisitManager;
+import org.isf.visits.model.ListWorkingDay;
 import org.isf.visits.model.WorkingDay;
 
 import java.awt.Dialog.ModalityType;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -56,68 +59,75 @@ public class InsertWorkingDay extends JDialog {
 	private final MouseAdapter 		Azione;
 	private 	  JButton 			okButton;
 	private 	  JButton 			cancelButton;
+	private 	  ListWorkingDay	ListaGiorniLavorativi;
 	
-	public InsertWorkingDay(final ArrayList <WorkingDay> GiorniLav) 
+	public InsertWorkingDay(final String Behaviour) 
 	{
-		Man					= 	VisitManager.getInstance();
-		Ore					=	new String[]{"1", "2", "3", "4", 
+		Man						= 	VisitManager.getInstance();
+		ListaGiorniLavorativi	=	Man.getListWorkingDay();
+		
+		Ore						=	new String[]{"1", "2", "3", "4", 
 								"5", "6", "7","8","9",
 								"10","11","12","13","14",
 								"15","16","17","18","19","20",
 								"21","22","23","24"};
-		Minuti				=	new String[]{"5", "10", "15", "20", 
+		Minuti					=	new String[]{"5", "10", "15", "20", 
 								"25", "30", "35", "40",
 								"45", "50", "55"};
-		Giorni 				=	new String[]{"Sunday", "Monday", "Tursday", 
+		Giorni 					=	new String[]{"Sunday", "Monday", "Tursday", 
 								"Wednesday", "Thursday", "Friday", "Saturday"}; 
-		GiorniModel			=	new DefaultComboBoxModel(Giorni);
-		OreStartModel		=	new DefaultComboBoxModel(Ore);
-		MinStartModel		=	new DefaultComboBoxModel(Minuti);
-		OreFineModel		=	new DefaultComboBoxModel(Ore);
-		MinFineModel		=	new DefaultComboBoxModel(Minuti);
-		OreStartBreakModel	=	new DefaultComboBoxModel(Ore);
-		MinStartBreakModel	=	new DefaultComboBoxModel(Minuti);
-		OreFineBreakModel	=	new DefaultComboBoxModel(Ore);
-		MinFineBreakModel	=	new DefaultComboBoxModel(Minuti);
-		lblStartAt 			= 	new JLabel("Start at");
-		lblTo 				= 	new JLabel("to");
-		lblBreakFrom 		= 	new JLabel("Break from");
-		lblEndAt 			= 	new JLabel("End at");
-		okButton			=	new JButton("Ok");
-		cancelButton		=	new JButton("Cancel");
-		comboDayBox 		= 	new JComboBox();
-		startHourBox	 	= 	new JComboBox();
-		startMinuteBox 		= 	new JComboBox();
-		endHourBox			= 	new JComboBox();
-		endMinuteBox 		=	new JComboBox();
-		starHourBreakBox	= 	new JComboBox();
-		startMinuteBreakBox = 	new JComboBox();
-		endHourBreakBox 	= 	new JComboBox();
-		endMinuteBreakBox 	= 	new JComboBox();
-		gl_contentPanel 	= 	new GroupLayout(contentPanel);
+		GiorniModel				=	new DefaultComboBoxModel(Giorni);
+		OreStartModel			=	new DefaultComboBoxModel(Ore);
+		MinStartModel			=	new DefaultComboBoxModel(Minuti);
+		OreFineModel			=	new DefaultComboBoxModel(Ore);
+		MinFineModel			=	new DefaultComboBoxModel(Minuti);
+		OreStartBreakModel		=	new DefaultComboBoxModel(Ore);
+		MinStartBreakModel		=	new DefaultComboBoxModel(Minuti);
+		OreFineBreakModel		=	new DefaultComboBoxModel(Ore);
+		MinFineBreakModel		=	new DefaultComboBoxModel(Minuti);
+		lblStartAt 				= 	new JLabel("Start at");
+		lblTo 					= 	new JLabel("to");
+		lblBreakFrom 			= 	new JLabel("Break from");
+		lblEndAt 				= 	new JLabel("End at");
+		okButton				=	new JButton("Ok");
+		cancelButton			=	new JButton("Cancel");
+		comboDayBox 			= 	new JComboBox();
+		startHourBox	 		= 	new JComboBox();
+		startMinuteBox 			= 	new JComboBox();
+		endHourBox				= 	new JComboBox();
+		endMinuteBox 			=	new JComboBox();
+		starHourBreakBox		= 	new JComboBox();
+		startMinuteBreakBox 	= 	new JComboBox();
+		endHourBreakBox 		= 	new JComboBox();
+		endMinuteBreakBox 		= 	new JComboBox();
+		gl_contentPanel 		= 	new GroupLayout(contentPanel);
 		startHourBox.setModel(OreStartModel);
+		
 		Azione				=  	new MouseAdapter()
 		{
 			public void mouseClicked(MouseEvent e)
 			{
-				if(e.getSource().equals(okButton))
+				
+				if(e.getSource().equals(cancelButton))
+					dispose();
+				/*
+				 * Se è stato premuto il pulsante per l'aggiunta della visita
+				 * allora procede all'inserimento di questa richiamando
+					le opportuna funzione e quindi eseguendo un comportamento,
+					altrienti procede ad eseguire la modifica di un giorno di visita 
+					selezionato
+				 */
+				else if(Behaviour.compareTo("aggiungi")==0)
 				{
 					WorkingDay Giorno= getWorkingDay();
-					//Verifico che il giorno non sia già presente in lista
-					if (verificaPresGiorno(Giorno,GiorniLav)==false)
-					{
-						GiorniLav.add(Giorno);
-						Giorno.notifyObservers(Giorno);
-						dispose();
-					}
-					else
-					{
-						JOptionPane.showMessageDialog(null,"Attenzione Giorno già presente!", 
-						"Errore",JOptionPane.OK_OPTION);	
-					}
+					Man.addWorkingDay(Giorno);
+					dispose();
+	
 				}
 				else
 				{
+					WorkingDay Giorno= getWorkingDay();
+					Man.modWorkingDay(Giorno);
 					dispose();
 				}
 			}
@@ -246,22 +256,8 @@ public class InsertWorkingDay extends JDialog {
 		GiornoLavorativo.setStartMinutePause(Convertitore.intValue());
 		
 		Convertitore=null;
-		//Setto l'observer del model WorkingDay
-		GiornoLavorativo.addObserver(Man.getViewImpostaScheduler());
 		return GiornoLavorativo;
 	}
-	/*
-	 * Questa funzione verifica che il giorno lavorativo che l'utente ha intezione di inserire
-	 * non sia già presente nella lista dei giorno lavorativi.
-	 * Se è presente ritorna TRUE
-	 * altrimenti ritorna FALSE
-	 */
-	private boolean verificaPresGiorno(WorkingDay Giorno,ArrayList<WorkingDay> GiorniLav)
-	{
-		if(GiorniLav.contains(Giorno)==true)
-			return true;
-		else
-			return false;
-	}
+
 }
 

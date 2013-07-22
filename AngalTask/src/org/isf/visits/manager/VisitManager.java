@@ -12,8 +12,10 @@ import org.isf.patient.model.Patient;
 import org.isf.utils.exception.OHException;
 import org.isf.visits.model.Visit;
 import org.isf.visits.model.WorkingDay;
+import org.isf.visits.model.ListWorkingDay;
 import org.isf.visits.service.IoOperations;
 import org.isf.visits.gui.ImpostaScheduler;
+import org.isf.visits.gui.InsertNoWorkingDay;
 import org.isf.visits.gui.InsertWorkingDay;
 
 import java.util.Date;
@@ -27,14 +29,20 @@ public class VisitManager {
 	private IoOperations 			ioOperations;
 	private ImpostaScheduler 		Imp;
 	private InsertWorkingDay		InsertWD;
-	private ArrayList<WorkingDay>	GiorniLavorativi;
+	//private ArrayList<WorkingDay>	GiorniLavorativi;
+	private ListWorkingDay			ListaGiorniLavorativi;
 	private static VisitManager 	instance;
-	
+	private InsertWorkingDay		ModWD;
+	private InsertNoWorkingDay		NoWD;
+	/*
+	 * Implementazione Design Pattern Singleton
+	 */
 	private VisitManager()
 	{
-		ioOperations	= 	new IoOperations();
-		GiorniLavorativi= 	new ArrayList<WorkingDay>();
-		instance		= 	this;
+		ioOperations			= 	new IoOperations();
+		//GiorniLavorativi= 	new ArrayList<WorkingDay>();
+		ListaGiorniLavorativi	= 	new ListWorkingDay();
+		instance				= 	this;
 	}
 	/**
 	 * returns the list of all {@link Visit}s related to a patID
@@ -90,14 +98,62 @@ public class VisitManager {
 	{
 		Imp = new ImpostaScheduler();
 		Imp.setVisible(true);
+		ListaGiorniLavorativi.addObserver(Imp);
 	}
 	
 	public void showInsertWorkingDay()
 	{
-		InsertWD = new InsertWorkingDay(GiorniLavorativi);
+		InsertWD = new InsertWorkingDay("aggiungi");
 		InsertWD.setVisible(true);
 	}
 	
+	public void showModWorkingDay()
+	{
+		ModWD = new InsertWorkingDay("modifica");
+		ModWD.setVisible(true);
+	}
+	
+	public void addWorkingDay(WorkingDay Giorno)
+	{
+		//Verifico che il giorno non sia già presente in lista
+		if(ListaGiorniLavorativi.GiorniLavorativi.contains(Giorno)==false)
+		{
+			ListaGiorniLavorativi.add(Giorno);
+			ListaGiorniLavorativi.notifyObservers(Giorno);
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null,"Attenzione Giorno già presente!", 
+					"Errore",JOptionPane.OK_OPTION);
+		}
+	}
+	
+	public void modWorkingDay(WorkingDay Giorno)
+	{
+		if(ListaGiorniLavorativi.GiorniLavorativi.contains(Giorno)==true)
+		{
+			ListaGiorniLavorativi.modify(Giorno);
+			ListaGiorniLavorativi.notifyObservers(Giorno);
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null,"Attenzione Giorno Non presente fra quelli" +
+					"modificabili", 
+			"Errore",JOptionPane.OK_OPTION);	
+		}	
+	}
+	
+	public void removeWD(WorkingDay Giorno)
+	{
+		ListaGiorniLavorativi.remove(Giorno);
+		ListaGiorniLavorativi.notifyObservers();
+	}
+	
+	public void showInsertNoWorkingDay()
+	{
+		NoWD	=	new InsertNoWorkingDay();
+		NoWD.setVisible(true);
+	}
 	/*public ArrayList<WorkingDay> giveWorkingDaysfromDB()
 	{
 		try
@@ -133,8 +189,16 @@ public class VisitManager {
 			return instance;
 	}
 	
-	public ArrayList<WorkingDay> getModelWorkingDay()
+	public ListWorkingDay getListWorkingDay()
 	{
-		return this.GiorniLavorativi;
+		return this.ListaGiorniLavorativi;
+	}
+	/*
+	 * Rimuovo i giorni lavorativi dal DB
+	 */
+	public boolean removeWorkingDayDB(ArrayList<WorkingDay> Giorni)
+	{
+		boolean ritorno=true;
+		return ritorno;
 	}
 }
